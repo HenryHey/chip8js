@@ -142,4 +142,120 @@ describe('Instruction tests', () => {
     expect(result.args[0]).toBe(0x1);
     expect(result.args[1]).toBe(0xA);
   });
+
+  it ('Disassembles SKIP_VX_NOT_EQUAL_VY opcode (9XY0)', () => {
+    const result = inst.disassemble(0x91A0);
+
+    expect(result.instruction.id).toBe('SKIP_VX_NOT_EQUAL_VY');
+    expect(result.args[0]).toBe(0x1);
+    expect(result.args[1]).toBe(0xA);
+  });
+
+  it ('Disassembles SET_I_NNN opcode (ANNN)', () => {
+    const result = inst.disassemble(0xA123);
+
+    expect(result.instruction.id).toBe('SET_I_NNN');
+    expect(result.args[0]).toBe(0x123);
+  });
+
+  it ('Disassembles GOTO_NNN_V0 opcode (BNNN)', () => {
+    const result = inst.disassemble(0xB123);
+
+    expect(result.instruction.id).toBe('GOTO_NNN_V0');
+    expect(result.args[0]).toBe(0x123);
+  });
+
+  it ('Disassembles SET_VX_RANDOM_NN opcode (CXNN)', () => {
+    const result = inst.disassemble(0xCA22);
+
+    expect(result.instruction.id).toBe('SET_VX_RANDOM_NN');
+    expect(result.args[0]).toBe(0xA);
+    expect(result.args[1]).toBe(0x22);
+  });
+
+  it ('Disassembles DRAW_SPRITE opcode (DXYN)', () => {
+    const result = inst.disassemble(0xDA12);
+
+    expect(result.instruction.id).toBe('DRAW_SPRITE');
+    expect(result.args[0]).toBe(0xA);
+    expect(result.args[1]).toBe(0x1);
+    expect(result.args[2]).toBe(0x2);
+  });
+
+  it ('Disassembles SKIP_IF_KEY_PRESSED opcode (EX9E)', () => {
+    const result = inst.disassemble(0xE19E);
+
+    expect(result.instruction.id).toBe('SKIP_IF_KEY_PRESSED');
+    expect(result.args[0]).toBe(0x1);
+  });
+
+  it ('Disassembles SKIP_IF_KEY_NOT_PRESSED opcode (EXA1)', () => {
+    const result = inst.disassemble(0xE1A1);
+
+    expect(result.instruction.id).toBe('SKIP_IF_KEY_NOT_PRESSED');
+    expect(result.args[0]).toBe(0x1);
+  });
+
+  it ('Disassembles SET_VX_TO_DELAY_TIMER opcode (FX07)', () => {
+    const result = inst.disassemble(0xF107);
+
+    expect(result.instruction.id).toBe('SET_VX_TO_DELAY_TIMER');
+    expect(result.args[0]).toBe(0x1);
+  });
+
+  it ('Disassembles WAIT_FOR_KEY opcode (FX0A)', () => {
+    const result = inst.disassemble(0xF10A);
+
+    expect(result.instruction.id).toBe('WAIT_FOR_KEY');
+    expect(result.args[0]).toBe(0x1);
+  });
+
+  it ('Disassembles SET_DELAY_TO_VX opcode (FX15)', () => {
+    const result = inst.disassemble(0xF115);
+
+    expect(result.instruction.id).toBe('SET_DELAY_TO_VX');
+    expect(result.args[0]).toBe(0x1);
+  });
+
+  it ('Disassembles SET_SOUND_TO_VX opcode (FX18)', () => {
+    const result = inst.disassemble(0xF118);
+
+    expect(result.instruction.id).toBe('SET_SOUND_TO_VX');
+    expect(result.args[0]).toBe(0x1);
+  });
+
+  it ('Disassembles ADD_VX_TO_I opcode (FX1E)', () => {
+    const result = inst.disassemble(0xF11E);
+
+    expect(result.instruction.id).toBe('ADD_VX_TO_I');
+    expect(result.args[0]).toBe(0x1);
+  });
+
+  it ('Disassembles SET_I_TO_SPRITE_VX opcode (FX29)', () => {
+    const result = inst.disassemble(0xF129);
+
+    expect(result.instruction.id).toBe('SET_I_TO_SPRITE_VX');
+    expect(result.args[0]).toBe(0x1);
+  });
+
+  it ('Disassembles BCD_VX opcode (FX33)', () => {
+    const result = inst.disassemble(0xF133);
+
+    expect(result.instruction.id).toBe('BCD_VX');
+    expect(result.args[0]).toBe(0x1);
+  });
+
+  it ('Disassembles REG_DUMP opcode (FX55)', () => {
+    const result = inst.disassemble(0xF155);
+
+    expect(result.instruction.id).toBe('REG_DUMP');
+    expect(result.args[0]).toBe(0x1);
+  });
+
+  it ('Disassembles REG_LOAD opcode (FX65)', () => {
+    const result = inst.disassemble(0xF165);
+
+    expect(result.instruction.id).toBe('REG_LOAD');
+    expect(result.args[0]).toBe(0x1);
+  });
 });
